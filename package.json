@@ -1,0 +1,37 @@
+{
+  "name": "pwa",
+  "version": "1.0.0",
+  "description": "A progressive web app primer with react",
+  "main": "index.js",
+  "homepage": "https://github.com/sabarigr/pwa",
+  "keywords": [
+    "pwa",
+    "react",
+    "progressive"
+  ],
+  "author": "sabari venkatesh",
+  "license": "MIT",
+  "scripts": {
+    "build": "NODE_ENV=production webpack --progress",
+    "deploy": "npm run build && gh-pages -d dist",
+    "start": "webpack-dev-server --mode development",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "react-router-dom": "^4.3.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.0.0",
+    "babel-loader": "^8.0.4",
+    "gh-pages": "^2.0.1",
+    "nodemon": "^1.18.7",
+    "webpack": "^4.27.0",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10"
+  }
+}
