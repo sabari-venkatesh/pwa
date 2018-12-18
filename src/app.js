@@ -1,9 +1,7 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-
-const Index = () => <h2>Home</h2>;
-const About = () => <h2>About</h2>;
-const Users = () => <h2>Users</h2>;
+import { BrowserRouter as Router, Link } from "react-router-dom";
+import AppRoutes from "./routes";
+import RouteWithSubRoutes from "./subroutes";
 
 export default class App extends React.Component {
   render() {
@@ -15,15 +13,12 @@ export default class App extends React.Component {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/about/">About</Link>
-            </li>
-            <li>
-              <Link to="/users/">Users</Link>
+              <Link to="/about">About</Link>
             </li>
           </ul>
-          <Route path="/" exact component={Index} />
-          <Route path="/about/" component={About} />
-          <Route path="/users/" component={Users} />
+          {AppRoutes.map((route) => (
+            <RouteWithSubRoutes key={route.path} {...route} />
+          ))}
         </>
       </Router>
     );
