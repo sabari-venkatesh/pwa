@@ -1,12 +1,14 @@
 import path from "path";
-import webpack from 'webpack';
+import webpack from "webpack";
+import HtmlWebpackPlugin from "html-webpack-plugin";
 
 const dev = process.env.NODE_ENV !== "production";
 const config = {
   context: path.join(__dirname, "src"),
   devtool: dev ? "none" : "source-map",
   devServer: {
-    contentBase: './dist',
+    contentBase: "./dist",
+    historyApiFallback: true,
     hot: true
   },
   entry: {
@@ -24,14 +26,17 @@ const config = {
   },
   output: {
     path: path.resolve(__dirname, "dist"),
-    publicPath: '/',
+    publicPath: "/",
     filename: "[name].bundle.js",
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      template: "index.html"
+    }),
     new webpack.HotModuleReplacementPlugin()
   ],
   resolve: {
-    extensions: ['*', '.js', '.jsx']
+    extensions: ["*", ".js", ".jsx"]
   },
 };
 
