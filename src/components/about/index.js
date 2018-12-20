@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import RouteWithSubRoutes from "../../subroutes";
+import RouteWithSubRoutes from "../../shared/subroutes";
 
 /* stateful component */
 export default class About extends Component {

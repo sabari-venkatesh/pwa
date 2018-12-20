@@ -1,7 +1,4 @@
-import React from "react";
-import { render } from "react-dom";
-import App from "./src/app";
-
-render(<App />, document.getElementById("app"));
-
-module.hot.accept();
+require("@babel/register")({
+  presets: ["@babel/preset-env"],
+});
+require("./src/server");
