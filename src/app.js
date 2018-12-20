@@ -1,26 +1,36 @@
-import React from "react";
-import { BrowserRouter as Router, Link } from "react-router-dom";
-import AppRoutes from "./routes";
-import RouteWithSubRoutes from "./subroutes";
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import routes from "./shared/routes";
+import { Route, Switch } from "react-router-dom";
+import Navbar from "./shared/nav";
+// import RouteWithSubRoutes from "./subroutes";
 
-export default class App extends React.Component {
+class App extends Component {
   render() {
     return (
-      <Router>
-        <>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-          </ul>
-          {AppRoutes.map((route) => (
-            <RouteWithSubRoutes key={route.path} {...route} />
-          ))}
-        </>
-      </Router>
+      <>
+        <Navbar />
+        <Switch>
+          {
+            routes.map(({ path, exact, component: Component, ...rest }) => (
+              <Route
+                key={path}
+                exact={exact}
+                path={path}
+                render={(props) => (
+                  <Component {...props} {...rest} />
+                )}
+              />
+            ))
+          }
+        </Switch>
+      </>
     );
   }
 }
+
+App.propTypes = {
+  data: PropTypes.array
+};
+
+export default App;
